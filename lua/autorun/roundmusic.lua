@@ -1,5 +1,19 @@
-RM_PLAY = 0
-RM_STOP = 1
+if SERVER then
+	AddCSLuaFile('lib/cfg_parser.lua')
+	AddCSLuaFile('roundmusic/sh_roundmusic.lua')
+	include('roundmusic/sh_roundmusic.lua')
+end
 
-if SERVER then end
-if CLIENT then end
+if CLIENT then
+	include('roundmusic/sh_roundmusic.lua')
+end
+
+if type(RM) ~= 'table' then error('unable to load roundmusic') end
+
+hook.Add('Initialize', 'roundmusic_initialize', function()
+	RM:Initialize()
+end)
+
+hook.Add('ShutDown', 'roundmusic_shutdown', function()
+	RM:Shutdown()
+end)
