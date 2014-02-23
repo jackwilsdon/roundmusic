@@ -1,5 +1,7 @@
 if type(SOURCE) ~= 'table' then error('something went wrong') end -- Make sure we have a source
 
+SOURCE.ID = 'base' -- The ID of the source. If not provided, the filename is used (excluding .lua extension)
+
 function SOURCE:Init() print('base source: init') end -- Called when source is loaded, either server or client side
 
 function SOURCE:SV_Init() print('base source: init server') end -- Called when source is loaded server side 
