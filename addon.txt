@@ -1,0 +1,6 @@
+"AddonInfo"
+{
+    "name"      "Roundmusic"
+    "version"   "0.0.1"
+    "info"      "Round music for Garry's Mod"
+}
