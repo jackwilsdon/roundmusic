@@ -8,7 +8,7 @@ include('../lib/cfg_parser.lua')
 local function IsValidSource(source)
 	if type(source) ~= 'table' then return false end
 	if type(source.ID) ~= 'nil' and type(source.ID) ~= 'string' then return false end
-	if type(source.SV_Init) ~= 'nil' and type(source.Init) ~= 'function' then return false end
+	if type(source.Init) ~= 'nil' and type(source.Init) ~= 'function' then return false end
 	if type(source.SV_Init) ~= 'nil' and type(source.SV_Init) ~= 'function' then return false end
 	if type(source.CL_Init) ~= 'nil' and type(source.CL_Init) ~= 'function' then return false end
 	if type(source.Play) ~= 'function' or type(source.Stop) ~= 'function' then return false end
@@ -60,11 +60,12 @@ function RM:Initialize()
 
 	local source = self:GetCurrentSource()
 
-	source:Init()
+	if type(source.Init) == 'function' then source:Init() end
+
 	if SERVER then
-		source:SV_Init()
+		if type(source.SV_Init) == 'function' then source:SV_Init() end
 	else
-		source:CL_Init()
+		if type(source.CL_Init) == 'function' then source:CL_Init() end
 	end
 end
 
