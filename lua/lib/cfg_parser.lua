@@ -88,7 +88,7 @@ function CFG:Parse(lines)
 	for _, line in ipairs(lines) do
 		if GetLength(line) > 0 then
 			local k, v = self:ParseLine(line)
-			
+
 			if type(out[k]) ~= 'nil' then
 				if type(out[k]) == 'table' then
 					table.insert(out[k], v)
