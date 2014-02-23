@@ -77,7 +77,7 @@ function RM:GetCurrentSource()
 	local config = self.CFG:Get('roundmusic')
 	local source = self.Sources[config.source]
 
-	if not IsValidSource(source) then error('invalid source ' .. config.source) end
+	if not IsValidSource(source) then error('invalid source ' .. tostring(config.source)) end
 
 	return source or {}
 end
