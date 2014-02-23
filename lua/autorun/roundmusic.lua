@@ -10,9 +10,7 @@ end
 
 if type(RM) ~= 'table' then error('unable to load roundmusic') end
 
-hook.Add('Initialize', 'roundmusic_initialize', function()
-	RM:Initialize()
-end)
+RM:Initialize()
 
 hook.Add('ShutDown', 'roundmusic_shutdown', function()
 	RM:Shutdown()
